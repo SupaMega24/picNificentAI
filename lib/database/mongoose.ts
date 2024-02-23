@@ -1,7 +1,7 @@
 import mongoose, { Mongoose } from "mongoose";
 
 
-const MONGODBU_URL = process.env.MONGODB_URL;
+const MONGODB_URL = process.env.MONGODB_URL;
 
 interface MongooseConnection {
     conn: Mongoose | null;
@@ -21,10 +21,10 @@ if (!cached) {
 export const connectToDatabase = async () => {
     if (cached.conn) return cached.conn;
 
-    if (!MONGODBU_URL) throw new Error('MONGODB_URL is missing');
+    if (!MONGODB_URL) throw new Error('MONGODB_URL is missing');
 
     cached.promise = cached.promise ||
-        mongoose.connect(MONGODBU_URL, {
+        mongoose.connect(MONGODB_URL, {
             dbName: 'picnificentai', bufferCommands: false
         })
 
