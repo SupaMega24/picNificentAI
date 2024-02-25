@@ -72,7 +72,7 @@ const TransformationForm = ({ action, data = null, userId, type, creditBalance, 
         setIsSubmitting(true);
 
         if (data || image) {
-            const transformationUrl = getCldImageUrl({
+            const transformationURL = getCldImageUrl({
                 width: image?.width,
                 height: image?.height,
                 src: image?.publicId,
@@ -87,10 +87,11 @@ const TransformationForm = ({ action, data = null, userId, type, creditBalance, 
                 height: image?.height,
                 config: transformationConfig,
                 secureURL: image?.secureURL,
-                transformationURL: transformationUrl,
+                transformationURL: transformationURL,
                 aspectRatio: values.aspectRatio,
                 prompt: values.prompt,
                 color: values.color,
+                transformation: transformationConfig,
             }
 
             if (action === 'Add') {
