@@ -95,6 +95,12 @@ export const Collection = ({
 };
 
 const Card = ({ image }: { image: IImage }) => {
+    // Check if the transformation type exists in transformationTypes
+    const transformationType = transformationTypes[image.transformationType];
+
+    // Determine the icon path based on the transformation type
+    const iconPath = transformationType ? `/assets/icons/${transformationType.icon}` : '/assets/icons/stars.svg';
+
     return (
         <li>
             <Link href={`/transformations/${image._id}`} className="collection-card">
@@ -106,17 +112,14 @@ const Card = ({ image }: { image: IImage }) => {
                     {...image.config}
                     loading="lazy"
                     className="h-52 w-full rounded-[10px] object-cover"
-                    sizes="(max-width: 767px) 100vw, (max-width: 1279px) 50vw, 33vw"
+                    sizes="(max-width:  767px)  100vw, (max-width:  1279px)  50vw,  33vw"
                 />
                 <div className="flex-between">
                     <p className="p-20-semibold mr-3 line-clamp-1 text-dark-600">
                         {image.title}
                     </p>
                     <Image
-                        src={`/assets/icons/${transformationTypes[
-                                image.transformation as TransformationTypeKey
-                            ].icon
-                            }`}
+                        src={iconPath}
                         alt={image.title}
                         width={24}
                         height={24}
@@ -125,4 +128,9 @@ const Card = ({ image }: { image: IImage }) => {
             </Link>
         </li>
     );
+
+
+
 };
+
+

@@ -119,7 +119,17 @@ export const plans = [
     },
 ];
 
-export const transformationTypes = {
+// Define the type for a single transformation type
+type TransformationType = {
+    type: string;
+    title: string;
+    subTitle: string;
+    config: object;
+    icon: string;
+};
+
+// Define the transformationTypes object with an index signature
+export const transformationTypes: { [key: string]: TransformationType } = {
     restore: {
         type: "restore",
         title: "Restore Image",
@@ -160,6 +170,7 @@ export const transformationTypes = {
         icon: "filter.svg",
     },
 };
+
 
 export const aspectRatioOptions = {
     "1:1": {
