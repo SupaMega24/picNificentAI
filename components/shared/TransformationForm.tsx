@@ -179,10 +179,10 @@ const TransformationForm = ({ action, data = null, userId, type, creditBalance, 
     }
 
     useEffect(() => {
-        if (image && (type === 'restore' || type === 'removeBackground')) {
-            setNewTransformation(transformationType.config)
+        if (image && transformationType && transformationType.config) {
+            setNewTransformation(transformationType.config);
         }
-    }, [image, transformationType.config, type])
+    }, [image, transformationType]);
 
     return (
         <Form {...form}>
